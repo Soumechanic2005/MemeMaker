@@ -3,44 +3,32 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MemeMaker Pro</title>
+    <title>Ultimate Meme Machine</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="container">
-        <header>
-            <h1>MemeMaker Pro</h1>
-            <p class="tagline">Unleash your inner meme artist!</p>
-        </header>
+    <header>
+        <h1>The Ultimate Meme Machine</h1>
+    </header>
 
-        <section class="input-panel">
-            <div class="image-upload-section">
-                <label for="image-upload" class="custom-file-upload">
-                    <svg viewBox="0 0 24 24" fill="currentColor" class="icon">
-                        <path d="M0 0h24v24H0z" fill="none"/>
-                        <path d="M9 16h6v-6h4l-7-7-7 7h4zm0 3h6v-3h4l-7-7-7 7h4zm3-13v6h-4l7 7 7-7h-4z"/>
-                    </svg>
-                    Upload Image
-                </label>
-                <input type="file" id="image-upload" accept="image/*">
-                <div id="image-preview"></div>
-            </div>
-
-            <div class="text-controls">
-                <div class="text-input-group">
-                    <label for="top-text">Top Text:</label>
-                    <input type="text" id="top-text" placeholder="Enter top text">
-                </div>
-                <div class="text-input-group">
-                    <label for="bottom-text">Bottom Text:</label>
-                    <input type="text" id="bottom-text" placeholder="Enter bottom text">
-                </div>
-            </div>
-
-            <div class="style-controls">
+    <main>
+        <section class="controls-section">
+            <div class="controls-container">
                 <div class="control-group">
-                    <label for="font-select">Font:</label>
-                    <select id="font-select">
+                    <label for="image-upload">Upload Image:</label>
+                    <input type="file" id="image-upload" accept="image/*">
+                </div>
+                <div class="control-group">
+                    <label for="top-text-input">Top Text:</label>
+                    <input type="text" id="top-text-input" placeholder="Enter top text">
+                </div>
+                <div class="control-group">
+                    <label for="bottom-text-input">Bottom Text:</label>
+                    <input type="text" id="bottom-text-input" placeholder="Enter bottom text">
+                </div>
+                <div class="control-group">
+                    <label for="font-family">Font Family:</label>
+                    <select id="font-family">
                         <option value="Impact">Impact</option>
                         <option value="Arial">Arial</option>
                         <option value="Verdana">Verdana</option>
@@ -49,46 +37,52 @@
                     </select>
                 </div>
                 <div class="control-group">
+                    <label for="font-size">Font Size:</label>
+                    <input type="number" id="font-size" value="36" min="12" max="100">
+                </div>
+                <div class="control-group">
                     <label for="text-color">Text Color:</label>
                     <input type="color" id="text-color" value="#ffffff">
                 </div>
                 <div class="control-group">
-                    <label for="text-align">Align:</label>
-                    <select id="text-align">
-                        <option value="center">Center</option>
-                        <option value="left">Left</option>
-                        <option value="right">Right</option>
-                    </select>
+                    <label for="outline-color">Outline Color:</label>
+                    <input type="color" id="outline-color" value="#000000">
+                </div>
+                <div class="control-group">
+                    <label for="outline-width">Outline Width:</label>
+                    <input type="number" id="outline-width" value="2" min="0" max="10">
+                </div>
+                <div class="control-group text-position-group">
+                    <label for="top-text-y">Top Y Position:</label>
+                    <input type="number" id="top-text-y" value="20">
+                </div>
+                <div class="control-group text-position-group">
+                    <label for="bottom-text-y">Bottom Y Position:</label>
+                    <input type="number" id="bottom-text-y" value="80">
                 </div>
             </div>
-
-            <button id="generate-button" class="primary-button">
-                <svg viewBox="0 0 24 24" fill="currentColor" class="icon">
-                    <path d="M0 0h24v24H0z" fill="none"/>
-                    <path d="M13 9V3.5L18.5 9H13zm-1 0V3h-6v6h6zm2 2v6h6v-6h-6zm-1 0v6h-6v-6h6zm-3-1c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3zm6 0c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/>
-                </svg>
-                Generate
-            </button>
+            <div class="preset-styles-container">
+                <h3>Preset Styles</h3>
+                <button class="preset-style-button" data-font="Impact" data-size="48" data-color="#ffffff" data-outline="#000000" data-outline-width="3">Classic Impact</button>
+                <button class="preset-style-button" data-font="Arial" data-size="32" data-color="#ffff00" data-outline="#ff0000" data-outline-width="2">Bold Yellow/Red</button>
+                <button class="preset-style-button" data-font="Comic Sans MS" data-size="40" data-color="#00ff00" data-outline="#0000ff" data-outline-width="1">Fun Green/Blue</button>
+            </div>
         </section>
 
-        <section class="output-panel">
-            <h2>Your Masterpiece</h2>
+        <section class="meme-section">
             <div class="meme-canvas-container">
                 <canvas id="meme-canvas" width="600" height="400"></canvas>
             </div>
-            <button id="download-button" class="secondary-button" style="display:none;">
-                <svg viewBox="0 0 24 24" fill="currentColor" class="icon">
-                    <path d="M0 0h24v24H0z" fill="none"/>
-                    <path d="M19 9h-4v2h4v2h-4v2h4v2h-4v-3c-1.1 0-2 .9-2 2v5c0 1.1.9 2 2 2h4c1.1 0 2-.9 2-2V9c0-1.1-.9-2-2-2zm-5-5v6h-4V4H5v16h6v-6h4v6h5V4h-6zm-2 10V6H7v8h4z"/>
-                </svg>
-                Download Meme
-            </button>
+            <div class="meme-actions">
+                <button id="apply-style">Apply Text Style</button>
+                <button id="download-button">Download Meme</button>
+            </div>
         </section>
+    </main>
 
-        <footer>
-            <p>&copy; 2025 MemeMaker Pro - Crafted with Gemini Power</p>
-        </footer>
-    </div>
+    <footer>
+        <p>&copy; 2025 Ultimate Meme Machine</p>
+    </footer>
 
     <script src="script.js"></script>
 </body>
