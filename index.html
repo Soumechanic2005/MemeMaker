@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>body {font-family: Arial; text-align: center;}</style>
+</head>
+<body>
+  <h1>Meme Maker</h1>
+  <input type="text" id="topText" placeholder="Top Text">
+  <input type="text" id="bottomText" placeholder="Bottom Text">
+  <button onclick="makeMeme()">Create Meme</button>
+  <img id="memeImage" src="https://via.placeholder.com/300" alt="Meme">
+  <script>
+    function makeMeme() {
+      var topText = document.getElementById("topText").value;
+      var bottomText = document.getElementById("bottomText").value;
+      document.getElementById("memeImage").src = "https://via.placeholder.com/300?text=" + encodeURIComponent(topText + "\n" + bottomText);
+    }
+  </script>
+  <a href="https://www.amazon.com/s?k=meme+merchandise">Buy Meme Stuff</a>
+</body>
+</html>
