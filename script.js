@@ -19,20 +19,38 @@ image.onload = () => {
     updateMemeCanvas();
 };
 
-imageUpload.addEventListener('change', (event) => {
+imageUpload.addEventListener('change', async (event) => {
     const file = event.target.files[0];
     if (file) {
-        const reader = new FileReader();
-        reader.onload = (e) => {
-            image.src = e.target.result;
+        const formData = new FormData();
+        formData.append('image', file);
+
+        try {
+            const response = await fetch('/upload', {
+                method: 'POST',
+                body: formData,
+            });
+
+            if (response.ok) {
+                const result = await response.text();
+                console.log(result); // "Image uploaded successfully"
+                // Optionally, you could now update the canvas with this uploaded image
+                const reader = new FileReader();
+                reader.onload = (e) => {
+                    image.src = e.target.result;
+                };
+                reader.readAsDataURL(file);
+            } else {
+                console.error('Image upload failed.');
+            }
+        } catch (error) {
+            console.error('There was an error uploading the image:', error);
         }
-        reader.readAsDataURL(file);
     } else {
-        // Optionally set a default image or clear the canvas
         ctx.clearRect(0, 0, memeCanvas.width, memeCanvas.height);
+        image.src = ''; // Clear the image source
     }
 });
-
 topTextInput.addEventListener('input', updateMemeCanvas);
 bottomTextInput.addEventListener('input', updateMemeCanvas);
 fontFamilySelect.addEventListener('change', updateMemeCanvas);
