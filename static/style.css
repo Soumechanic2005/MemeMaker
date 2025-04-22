@@ -1,66 +1,42 @@
-/* Softer dark background with subtle texture */
 body {
     font-family: 'Arial', sans-serif;
     display: flex;
     flex-direction: column;
     align-items: center;
     padding: 30px;
-    background-color: #282828; /* Softer dark gray */
+    background-color: #f0f0f0; /* Light background */
     margin: 0;
-    background-image: linear-gradient(rgba(255, 255, 255, 0.015), rgba(255, 255, 255, 0.015)),
-                      url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAAECAYAAACp8Z5YAAAAEklEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII='); /* Very subtle pattern */
-    background-size: auto, 6px 6px;
-    background-repeat: repeat;
+    color: #333; /* Dark text color */
 }
 
-header {
-    background-color: #333333; /* Slightly lighter soft dark */
-    color: #f0f0f0;
-    padding: 20px;
-    text-align: center;
+header,
+.controls-section,
+.meme-section,
+footer {
+    background-color: rgba(240, 240, 240, 0.8); /* Light, semi-transparent background */
+    border-radius: 12px;
+    border: 1px solid rgba(0, 0, 0, 0.05); /* Very subtle dark border */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
+    padding: 25px;
     margin-bottom: 30px;
     width: 90%;
-    border-radius: 15px;
-    box-shadow: 8px 8px 20px #1a1a1a, -8px -8px 20px #4d4d4d; /* Softer, more pronounced Neumorphism */
+    max-width: 960px;
+    box-sizing: border-box;
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
 }
 
 header h1 {
-    margin: 0;
-    font-size: 2.5em;
-}
-
-main {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 90%;
-    max-width: 960px;
-}
-
-.controls-section {
-    background-color: #333333; /* Softer dark for controls */
-    padding: 25px;
-    border-radius: 15px;
-    box-shadow: 8px 8px 20px #1a1a1a, -8px -8px 20px #4d4d4d; /* Softer, more pronounced Neumorphism */
-    margin-bottom: 30px;
-    width: 100%;
-}
-
-.controls-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 15px;
-}
-
-.control-group {
-    display: flex;
-    flex-direction: column;
+    color: #333; /* Dark header text */
+    font-size: 2.8em;
+    margin-bottom: 15px;
 }
 
 label {
-    font-weight: bold;
-    margin-bottom: 5px;
-    color: #e0e0e0; /* Lighter text */
+    color: #555; /* Dark gray labels */
+    font-weight: normal;
+    margin-bottom: 8px;
+    display: block;
 }
 
 input[type="file"],
@@ -68,76 +44,69 @@ input[type="text"],
 select,
 input[type="number"],
 input[type="color"] {
+    background-color: rgba(220, 220, 220, 0.7);
+    color: #333;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
     padding: 12px;
-    border: none;
-    border-radius: 10px;
     font-size: 16px;
-    margin-bottom: 10px;
+    margin-bottom: 15px;
     box-sizing: border-box;
     width: 100%;
-    background-color: #3a3a3a; /* Slightly lighter input background */
-    color: #f0f0f0;
-    box-shadow: inset 3px 3px 7px #1a1a1a, inset -3px -3px 7px #525252; /* More defined inset */
 }
 
 select {
     appearance: none;
-    background-image: url('data:image/svg+xml;charset=UTF-8,<svg fill="%23e0e0e0" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>');
+    background-image: url('data:image/svg+xml;charset=UTF-8,<svg fill="%23555" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>');
     background-repeat: no-repeat;
     background-position: right 10px center;
     background-size: 1.5em;
 }
 
 .preset-styles-container {
-    margin-top: 20px;
-    padding-top: 15px;
-    border-top: 1px solid #4d4d4d; /* Subtle divider */
+    margin-top: 25px;
+    padding-top: 20px;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
     display: flex;
-    gap: 10px;
+    gap: 15px;
     flex-wrap: wrap;
+    justify-content: center;
 }
 
 .preset-styles-container h3 {
     width: 100%;
     margin-top: 0;
-    margin-bottom: 10px;
-    color: #e0e0e0;
+    margin-bottom: 15px;
+    color: #333;
+    text-align: center;
 }
 
 .preset-style-button {
-    padding: 10px 18px;
-    border: none;
+    background-color: rgba(200, 200, 200, 0.7);
+    color: #333;
+    border: 1px solid rgba(100, 100, 100, 0.1);
     border-radius: 8px;
-    background-color: #3a3a3a; /* Lighter button background */
-    color: #f0f0f0;
+    padding: 12px 20px;
     cursor: pointer;
-    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    transition: background-color 0.3s ease;
     font-size: 14px;
-    box-shadow: 5px 5px 10px #1a1a1a, -5px -5px 10px #525252; /* Softer button Neumorphism */
 }
 
 .preset-style-button:hover {
-    background-color: #444444;
-    box-shadow: inset 3px 3px 7px #1a1a1a, inset -3px -3px 7px #525252;
-}
-
-.meme-section {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 100%;
-    margin-bottom: 30px;
+    background-color: rgba(220, 220, 220, 0.7);
 }
 
 .meme-canvas-container {
-    border: none;
-    box-shadow: 8px 8px 20px #1a1a1a, -8px -8px 20px #4d4d4d; /* Softer canvas container Neumorphism */
-    border-radius: 15px;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    border-radius: 12px;
     overflow: hidden;
-    margin-bottom: 20px;
+    margin-bottom: 30px;
     max-width: 700px;
     width: 100%;
-    background-color: #333333; /* Softer dark for canvas container */
+    background-color: rgba(240, 240, 240, 0.7); /* Match container background */
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
 }
 
 #meme-canvas {
@@ -149,48 +118,49 @@ select {
 
 .meme-actions {
     display: flex;
-    gap: 15px;
+    gap: 20px;
+    justify-content: center;
+    width: 100%;
 }
 
 .meme-actions button {
-    padding: 12px 25px;
+    padding: 15px 30px;
     border: none;
-    border-radius: 10px;
+    border-radius: 8px;
     font-size: 16px;
     cursor: pointer;
-    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    transition: background-color 0.3s ease;
 }
 
 #apply-style {
-    background-color: #4dd0e1; /* Softer teal */
-    color: #222222;
-    box-shadow: 5px 5px 10px #2e8b8b, -5px -5px 10px #81ecec; /* Softer accent Neumorphism */
+    background-color: #cc0000; /* Red color for apply button */
+    color: white;
 }
 
 #apply-style:hover {
-    background-color: #2e8b8b;
-    box-shadow: inset 3px 3px 7px #1a5e5e, inset -3px -3px 7px #6dd6d6;
+    background-color: #aa0000;
 }
 
 #download-button {
-    background-color: #ba68c8; /* Softer purple */
-    color: #222222;
-    box-shadow: 5px 5px 10px #8e44ad, -5px -5px 10px #e082f7; /* Softer accent Neumorphism */
+    background-color: #4CAF50; /* Green for download */
+    color: white;
 }
 
 #download-button:hover {
-    background-color: #8e44ad;
-    box-shadow: inset 3px 3px 7px #633974, inset -3px -3px 7px #d48ae3;
+    background-color: #45a049;
 }
 
 footer {
-    background-color: #333333; /* Softer dark */
-    color: #e0e0e0;
+    background-color: rgba(240, 240, 240, 0.8);
+    color: #555;
     text-align: center;
-    padding: 15px;
-    width: 90%;
-    border-radius: 15px;
-    box-shadow: -8px -8px 20px #1a1a1a, 8px 8px 20px #4d4d4d; /* Softer, more pronounced Neumorphism */
+    padding: 20px;
+    width: 100%;
+    box-shadow: 0 -8px 16px rgba(0, 0, 0, 0.1);
+    border-radius: 12px;
+    box-sizing: border-box;
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
     font-size: 0.9em;
     margin-top: 30px;
 }
@@ -211,7 +181,6 @@ footer {
 
     .meme-actions {
         flex-direction: column;
-        width: 100%;
     }
 
     .meme-actions button {
